@@ -1,0 +1,69 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <nav id="nav" class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark">
+        <div class="container">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav">
+                    <li class="nav-item">@Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "nav-link" })</li>
+                    <li class="nav-item">@Html.ActionLink("About", "About", "Home", new { area = "" }, new { @class = "nav-link" })</li>
+                    <li class="nav-item">@Html.ActionLink("Contact us", "Contact", "Home", new { area = "" }, new { @class = "nav-link" })</li>
+                    <li class="nav-item">@Html.ActionLink("Cuisine", "Index", "Cuisines", new { area = "" }, new { @class = "nav-link" })</li>
+                    <li class="nav-item">@Html.ActionLink("Menu", "Index", "Dishes", new { area = "" }, new { @class = "nav-link" })</li>
+                </ul>
+
+                @using (Html.BeginForm("Index", "Dishes", FormMethod.Get, new { @class = "d-flex" }))
+                {
+                    <div class="form-group">
+                        <div class="input-group">
+
+
+                            <div class="input-group">
+                                @Html.TextBox("search", null, new { @class = "form-control", @placeholder = "Search Dishes", })
+                                <span class="input-group-btn" style="margin-left:10px;">
+                                    <button type="submit" style="background-color: #ffeabfd3; color: brown; text-decoration: none;">Submit</button>
+                                </span>
+                            </div>
+
+                        </div>
+                    </div>}
+
+
+
+            </div>
+        </div>
+    </nav>
+
+
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+    <footer style="text-align: center; background-color: #f8efde">
+        <address>
+            Written by <a href="mailto:webmaster@massey.ac.nz" style="text-decoration:none; color:#683605">Tianyi Wu</a>.<br>
+            Visit us at: Massey.ac.nz<br>
+            New Zealand<br>
+            E-mail: <a href="mailto:1446516968@qq.com" style="text-decoration:none; color:#683605">2657282911@qq.com</a><br />
+            Phone: <a href="tel:13932136303" style="text-decoration:none; color:#683605">13932136303</a><br />
+            Address:XXXXX-XXXXX-XXXXX
+        </address>
+    </footer>
+</body>
+</html>

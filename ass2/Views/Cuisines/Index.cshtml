@@ -1,0 +1,127 @@
+﻿@model IEnumerable<ass2.Models.Cuisine>
+
+@{
+    ViewBag.Title = "Index";
+}
+<style>
+    .grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-gap: 20px;
+    }
+
+    .grid-item {
+        text-align: center;
+        padding: 15px;
+        border: 1px solid #ccc;
+        transition: transform 0.3s ease;
+    }
+
+        .grid-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+    .text-box {
+        position: absolute;
+        top: 50%; /* 将文本框垂直居中 */
+        left: 50%; /* 将文本框水平居中 */
+        transform: translate(-50%, -50%); /* 通过transform属性实现水平垂直居中 */
+        background-color: rgba(255, 255, 255, 0.5); /* 半透明背景 */
+        padding: 20px;
+        text-align: center;
+    }
+</style>
+<div>
+    <img src="~/Content/Images/页面顶图2.jpg" style="width: 100%; height: auto;" alt="描述你的图片">
+
+</div>
+<div class="header" style=" background-color: #f5deb3; padding: 10px;">
+
+</div>
+<body>
+
+    <div class="header" style=" background-color: #f5deb3; padding: 10px;">
+
+        <div class="text-box">
+            <h1>Chinese Restaurant</h1>
+            <p>The restaurant is dedicated to providing you with authentic Chinese cuisine and experiencing a variety of flavors</p>
+            @Html.ActionLink("Check out the menu", "Index", "Dishes", null, new { style = "background-color: #ffeabfd3; color: brown; padding: 10px 20px; text-align: center; text-decoration: none; display: inline-block; border-radius: 5px;" })
+        </div>
+    </div>
+
+
+</body>
+<div style="display: flex ;">
+    <div style="width: 30%; margin-right: 10px; border-right: 1px solid #000" text-align: center;">
+        <h3 style="text-align:center">Price list</h3>
+        <p>
+              Anhui cuisine: Anhui cuisine is known for its light and refreshing flavors, with a focus on sour and salty dishes. It is famous for dishes such as fish in sour and sweet sauce, braised pork with tangerine peel, and pickled vegetables.
+        </p>
+        <p>
+              Fujian cuisine: Fujian cuisine is known for its seafood dishes, particularly those featuring fish and shellfish. It is also known for its use of soy sauce, rice wine, and spices. Popular dishes include seafood hotpot, steamed fish with preserved vegetables, and fried rice noodles.
+        </p>
+        <p>
+              Guangdong cuisine: Guangdong cuisine is known for its mild flavors, with a focus on fresh ingredients and light cooking methods. It is famous for dishes such as Cantonese-style barbecued meats, roast goose, and dim sum.
+        </p>
+        <p>
+              Guangxi cuisine: Guangxi cuisine is known for its use of freshwater fish and shellfish, as well as for its unique flavors and spices. Popular dishes include fish hotpot, stir-fried river snails, and sour bamboo shoots.
+        </p>
+        <p>
+              Hunan cuisine: Hunan cuisine is known for its bold and spicy flavors, with a focus on meat dishes such as roasted duck and spicy beef. It is also known for its use of Sichuan peppercorns, chili peppers, and other spicy ingredients.
+        </p>
+        <p>
+              Jiangsu cuisine: Jiangsu cuisine is known for its light and elegant flavors, with a focus on seafood and vegetables. Popular dishes include seafood soup, steamed fish with ginger and scallions, and braised pork with preserved vegetables.
+        </p>
+        <p>
+              Shandong cuisine: Shandong cuisine is known for its use of freshwater and seafood, as well as for its bold flavors and hearty dishes. Popular dishes include salted duck, stir-fried vegetables with pork, and braised sea cucumber.
+        </p>
+    </div>
+    <div style="width: 70%;">
+        <div class="grid">
+            <div class="grid-item" style="background-color:ghostwhite">
+                <img width="200" height="150" src="~/Content/Images/Fuqi feipian.jpg" alt="Sample">
+                @Html.ActionLink("Sichuan cuisine", "Index", "Dishes", new { Cuisine = "Sichuan" },
+               new { style = "font-family: Gabriola Print; color: #834214; font-size: 45px; text-decoration: none;" })
+            </div>
+            <div class="grid-item" style="background-color:ghostwhite">
+                <img width="200" height="150" src="~/Content/Images/Yipin toufu.jpg" alt="Sample">
+                @Html.ActionLink("Shandong cuisine", "Index", "Dishes", new { Cuisine = "Shandong" },
+               new { style = "font-family: Gabriola Print; color: #834214; font-size: 45px; text-decoration: none;" })
+            </div>
+            <div class="grid-item" style="background-color:ghostwhite">
+                <img width="200" height="150" src="~/Content/Images/Baiqie chicken.jpg" alt="Sample">
+                @Html.ActionLink("Guangdong cuisine", "Index", "Dishes", new { Cuisine = "Guangdong" },
+               new { style = "font-family: Gabriola Print; color:#834214; font-size: 45px; text-decoration: none;" })
+            </div>
+            <div class="grid-item" style="background-color:ghostwhite">
+                <img width="200" height="150" src="~/Content/Images/Kouwei xia.jpg" alt="Sample">
+                @Html.ActionLink("Hunan cuisine", "Index", "Dishes", new { Cuisine = "Hunan" },
+               new { style = "font-family: Gabriola Print; color: #834214; font-size: 45px; text-decoration: none;" })
+            </div>
+            <div class="grid-item" style="background-color:ghostwhite">
+                <img width="200" height="150" src="~/Content/Images/Dongpo meat.jpg" alt="Sample">
+                @Html.ActionLink("Zhejiang cuisine", "Index", "Dishes", new { Cuisine = "Zhejiang" },
+               new { style = "font-family: Gabriola Print; color: #834214; font-size: 45px; text-decoration: none;" })
+            </div>
+            <div class="grid-item" style="background-color:ghostwhite">
+                <img width="200" height="150" src="~/Content/Images/Hongshao meat.jpg" alt="Sample">
+                @Html.ActionLink("Jiangsu cuisine", "Index", "Dishes", new { Cuisine = "Jiangsu" },
+               new { style = "font-family: Gabriola Print; color:#834214 ; font-size: 45px; text-decoration: none;" })
+            </div>
+            <div class="grid-item" style="background-color:ghostwhite">
+                <img width="200" height="150" src="~/Content/Images/Fotiaoqiang.jpg" alt="Sample">
+                @Html.ActionLink("Fujian cuisine", "Index", "Dishes", new { Cuisine = "Fujian" },
+               new { style = "font-family: Gabriola Print; color:#834214; font-size: 45px; text-decoration: none;" })
+            </div>
+            <div class="grid-item" style="background-color:ghostwhite">
+                <img width="200" height="150" src="~/Content/Images/Zhonghe soup.jpg" alt="Sample">
+                @Html.ActionLink("Anhui cuisine", "Index", "Dishes", new { Cuisine = "Anhui" },
+               new { style = "font-family: Gabriola Print; color: #834214; font-size: 45px; text-decoration: none;" })
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

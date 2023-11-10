@@ -1,0 +1,144 @@
+﻿@{
+    ViewBag.Title = "About";
+}
+<main aria-labelledby="title">
+    <div>
+        <img src="~/Content/Images/页面顶图.jpg" style="width: 100%; height: auto;" alt="描述你的图片">
+
+    </div>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            .text-box {
+                position: absolute;
+                top: 50%; /* 将文本框垂直居中 */
+                left: 50%; /* 将文本框水平居中 */
+                transform: translate(-50%, -50%); /* 通过transform属性实现水平垂直居中 */
+                background-color: rgba(255, 255, 255, 0.5); /* 半透明背景 */
+                padding: 20px;
+                text-align: center;
+            }
+            .container {
+                display: flex;
+                flex-direction: row;
+                width: 100%;
+                margin-bottom: 20px;
+            }
+
+            .text {
+                flex: 1;
+                background-color: #FFEFDB; /* 第一组背景颜色 */
+                padding: 20px;
+            }
+
+            .video {
+                flex: 1;
+                background-color: #FFEFDB; /* 第一组视频背景颜色 */
+                padding: 20px;
+            }
+
+            .container:nth-child(odd) .text {
+                background-color: #EEDFCC; /* 第二组及其后的奇数组背景颜色 */
+            }
+
+            .container:nth-child(odd) .video {
+                background-color: #FFF5EE; /* 第二组及其后的奇数组视频背景颜色 */
+            }
+            .btn {
+                display: inline-block;
+                padding: 10px 20px;
+                background-color: #faf5f5dc; /* 按钮背景颜色 */
+                color: #5c3902; /* 文字颜色 */
+                text-decoration: none;
+                margin-top: 20px; /* 设置按钮与文本框之间的间距 */
+            }
+        </style>
+        <title>文字和视频布局</title>
+    </head>
+    <body>
+        <div class="header">
+            <div class="text-box">
+                <h1>Chinese Restaurant</h1>
+                <p>The restaurant is dedicated to providing you with authentic Chinese cuisine and experiencing a variety of flavors</p>
+                @Html.ActionLink("Continue", "Index", "Cuisines", null, new { style = "background-color: #ffeabfd3; color: brown; padding: 10px 20px; text-align: center; text-decoration: none; display: inline-block; border-radius: 5px;" })
+
+            </div>
+        </div>
+        <div class="container">
+            <div class="text">
+                <h2 style="text-align:center">Cuisines of China</h2>
+                <p style="margin-left:10px;margin-right:10px;font-size:18px">
+                    Memories of home
+
+                      It is written in the salt pan of the labor
+
+                    Cool sea breeze
+
+                    Brilliant fireworks
+
+                    It is also written in the dishes one by one
+
+                    It is held by us like a palm print
+
+                    When the sun and the moon turn and rub your eyes again
+
+                    The scenery has changed, and the taste is still there
+
+                    A lifetime of disarming, the charm of the four seasons still exists;
+                </p>
+            </div>
+            <div class="video">
+                <video width="100%" height="240" controls>
+                    <source src="~/Content/video/人间至味.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+        </div>
+        <div class="container">
+            <div class="video">
+                <video width="100%" height="240" controls>
+                    <source src="~/Content/video/舌尖上的中国.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+            <div class="text">
+                <h2 style="text-align:center">Chinese New Year</h2>
+                <p style="margin-left:10px;margin-right:10px;font-size:18px">
+                    Across mountains, rivers, oceans
+                    Different lands collide with similar cuisines
+
+                    People never stop looking
+                    Get inspired in flavor
+
+                    Through day and night, four seasons, three meals
+                    Different cultures, the same love
+
+                    Every food hides a different kind of joy
+                    Each flavor contains a variety of happiness
+
+                    Explore 25 countries around the world
+                    Photograph over 300 delicacies
+                    Record countless touching smiling faces
+
+                    The mountains and rivers are still the same
+
+                    The flavor does not change
+                </p>
+            </div>
+        </div>
+        <div class="container">
+            <div class="text">
+                <h2 style="text-align:center">Share with families</h2>
+                <p style="margin-left:10px;margin-right:10px;font-size:18px">The fire of the flood and famine is extinguished, and the great changes of the times are calm. In the end, there is no trace projected on the food, turning into our ordinary three meals a day. Everyone who tastes carefully will feel it and have endless aftertaste..</p>
+            </div>
+            <div class="video">
+                <video width="100%" height="240" controls>
+                    <source src="~/Content/video/中国美食.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+        </div>
+    </body>
+    </html>
+</main>

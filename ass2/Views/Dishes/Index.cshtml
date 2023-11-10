@@ -1,0 +1,136 @@
+﻿@*@model IEnumerable<ass2.Models.Dish>
+*@
+@model ass2.ViewModels.DishesIndexViewModel
+@using PagedList.Mvc
+
+@{
+    ViewBag.Title = "Index";
+
+}
+
+
+<style>
+    .text-box {
+        position: absolute;
+        top: 50%; /* 将文本框垂直居中 */
+        left: 50%; /* 将文本框水平居中 */
+        transform: translate(-50%, -50%); /* 通过transform属性实现水平垂直居中 */
+        background-color: rgba(255, 255, 255, 0.5); /* 半透明背景 */
+        padding: 20px;
+        text-align: center;
+    }
+
+</style>
+<p>
+    @(String.IsNullOrWhiteSpace(Model.Search) ? "Sowing all" : "You search for " + Model.Search + "found")
+    @Model.Dishes.TotalItemCount dishes
+</p>
+
+<p>
+    <div>
+        <img src="~/Content/Images/页面顶图3.jpg" style="width: 100%; height: auto;" alt="描述你的图片">
+
+    </div>
+    <div class="header" style=" background-color: #f5deb3; padding: 10px;">
+
+        <div class="text-box">
+            <h1>Chinese Restaurant</h1>
+            <p>The restaurant is dedicated to providing you with authentic Chinese cuisine and experiencing a variety of flavors</p>
+            @using (Html.BeginForm("Index", "Dishes", FormMethod.Get))
+            {
+                <label style="font-size:20px;color:#5e4008">Filter by cuisine:</label> @*@Html.DropDownList("Cuisine", "All")*@
+                @Html.DropDownListFor(vm => vm.Cuisine, Model.CuisineFilterItems, "All");
+                <input type="Submit" value="Filter" style="background-color: #fef6e8; color: #5e4008 ;border:none" />
+                <input type="hidden" name="Search" id="Search" value="@ViewBag.Search" />
+            }
+
+
+            <p> </p>
+            @Html.ActionLink("Contact us", "Contact", "Home", null, new { style = "background-color: #ffeabfd3; color: brown; padding: 10px 20px; text-align: center; text-decoration: none; display: inline-block; border-radius: 5px;" })
+
+        </div>
+    </div>
+</p>
+
+
+
+<body>
+    <div style="border-bottom: 2px solid #c89156;background-color:#fef6e8; padding-bottom: 10px;">
+        <div style="width: 33.33%; float: left; text-align: center ;">
+            <img alt="wrong" src="~/Content/Images/时钟图标.png" style="margin-top:20px" />
+            <h2>Reserve seat</h2>
+            <p style="margin-left:40px; margin-right:40px">  The restaurant offers a reservation service, you can call or come in the day before your meal to reserve a seat, we will reserve a seat for you at the time you have booked to ensure your dining experience.</p>
+        </div>
+        <div style="width: 33.33%; float: left; text-align: center; border-left: 3px solid #c89156; border-right: 3px solid #c89156; ">
+            <img alt="wrong" src="~/Content/Images/卡车图标.png" style="margin-top:20px" />
+            <h2>Home Delivery</h2>
+            <p style="margin-left:40px; margin-right:40px">  The restaurant offers door-to-door delivery service, you can call or use the exclusive software to order the dishes, we have a dedicated delivery staff to ensure that the dishes are delivered to the designated place within half an hour, restoring the most original flavor.
+        </div>
+        <div style="width: 33.33%; float: left; text-align: center;">
+            <img alt="wrong" src="~/Content/Images/联系图标.png" style="margin-top:20px" />
+            <h2>Contact us</h2>
+            <p style="margin-left: 40px; margin-right: 40px; margin-top: 50px; font-size: 20px; text-align:left ;">
+                E-mail: <a href="mailto:1446516968@qq.com" style="text-decoration:none; color:#683605">2657282911@qq.com</a><br />
+                Phone: <a href="tel:13932136303" style="text-decoration:none; color:#683605">13932136303</a><br />
+                Address:XXXXX-XXXXX-XXXXX
+            </p>
+        </div>
+        <div style="clear: both;"></div> <!-- 清除浮动 -->
+    </div>
+    <table class="table" style="background-color:#fff7de">
+        <tr>
+            <th>
+                <p> Picture</p>
+            </th>
+
+            <th>
+                Taste
+            </th>
+            <th>
+                Price
+            </th>
+            <th>
+                Name
+            </th>
+            <th>
+                Score
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model.Dishes)
+        {
+
+            <tr>
+                <td>
+                    @if (item.Name != null)
+                    {
+                        string imagePath = $"~/Content/Images/{item.Name.ToLower()}.jpg";
+                        <img src="@Url.Content(imagePath)" alt="@item.Name" style="width:100px; height:60px;">
+                    }
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Taste)
+
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Score)
+                </td>
+            </tr>
+        }
+
+
+    </table>
+    <div>
+        Page @(Model.Dishes.PageCount <Model.Dishes.PageNumber ? 0 : Model.Dishes.PageNumber) of @Model.Dishes.PageCount
+        @Html.PagedListPager(Model.Dishes, page => Url.Action("Index", new { city = Model.Cuisine, Search = Model.Search, page }), new PagedListRenderOptions { UlElementClasses = new string[] { "pagination" }, LiElementClasses = new string[] { "page-item" } })
+    </div>
+
+</body>

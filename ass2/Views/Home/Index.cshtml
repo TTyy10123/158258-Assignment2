@@ -1,0 +1,47 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<main>
+
+    <div class="wrap">
+        <div class="w-title tc">
+        </div>
+        <div class="conwrap">
+            <div class="con-bd">
+                <div id="imageContainer">
+                    <img src="~/Content/Images/背景图1.jpg" class="sliderImage" />
+                    <img src="~/Content/Images/背景图2.jpg" class="sliderImage" />
+                    <img src="~/Content/Images/背景图3.jpg" class="sliderImage" />
+                </div>
+                <div style="height: 800px; border: 1px solid #ccc;">
+                    <p class="centered-text" style="font-size:80px">CHINESE RESTAURANT</p>
+                </div>
+                <div class="button1">
+                </div>
+                <div class="con-bottom"></div>
+            </div>
+        </div>
+        <a href="#" class="link-prev"></a>
+        <a href="#" class="link-next"></a>
+</main>
+<script src="js/jquery.js"></script>
+<script src="js/Action.js"></script>
+<script src="js/slick.js"></script>
+<script>
+    var currentIndex = 0;
+    var images = document.getElementsByClassName('sliderImage');
+    images[0].classList.add('active'); // 初始状态第一张图片显示
+
+    function changeImage() {
+        images[currentIndex].classList.remove('active');
+        currentIndex = (currentIndex + 1) % images.length;
+        images[currentIndex].classList.add('active');
+    }
+
+    setInterval(changeImage, 5000); // 定时切换图片
+
+</script>
+<div style="text-align: center;">
+    @Html.ActionLink("    Learn more    ", "About", "Home", null, new { style = "padding-left:10px; background-color: #ffeabfd3; color: brown; padding: 10px 20px; text-align: center; text-decoration: none; display: inline-block; border-radius: 5px;" })
+    </div>

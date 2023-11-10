@@ -1,0 +1,39 @@
+﻿@{
+    ViewBag.Title = "Contact";
+}
+
+    <style>
+
+        .text-box {
+            position: relative;
+            top: 50%; /* 将文本框垂直居中 */
+            left: 50%; /* 将文本框水平居中 */
+            transform: translate(-50%, -50%); /* 通过transform属性实现水平垂直居中 */
+            background-color: rgba(255, 255, 255, 0.5); /* 半透明背景 */
+            padding: 20px;
+            text-align: center;
+            margin-top:30%;
+            margin-bottom:10px;
+        }
+    </style>
+    
+<body>
+    <div class="text-box">
+        <form action="/submit_feedback" method="post">
+            <h2>Contact us:</h2>
+            <p style="font-size:20px">Leave your suggestion and we will give you the most honest feedback</p>
+            <label for="name">Name: </label><br>
+            <input type="text" id="name" name="name"><br>
+            <label for="inquiry">Message: </label><br>
+            <textarea id="inquiry" name="inquiry" rows="4" cols="50"></textarea><br>
+            <label for="feedback">Idea: </label><br>
+            <textarea id="feedback" name="feedback" rows="4" cols="50"></textarea><br><br>
+            @*<input type="submit" value="Submit" id="mybutton">*@
+        <div>
+            
+                <input type="button" value="Submit" onclick="msg()" style="background-color:#f6e6bf;border:unset;font-size:20px"/>
+           
+        </div>
+        </form>
+    </div>
+</body>
